@@ -1,6 +1,6 @@
-package com.wachoo.demo.quartz.repository;
+package com.wachoo.demo.quartz.dao.repository;
 
-import com.wachoo.demo.quartz.entity.ConfigDO;
+import com.wachoo.demo.quartz.entity.dbo.QuartzConfigDO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -25,19 +25,19 @@ public class ConfigRepositoryTest {
 
   @Test
   public void saveTest() throws Exception {
-    ConfigDO config = new ConfigDO();
+    QuartzConfigDO config = new QuartzConfigDO();
     config.setCron("0 30 20 * * ?");
     config.setCreator("wachoo");
-    ConfigDO configDO = configRepository.save(config);
-    log.info(configDO.toString());
+    QuartzConfigDO quartzConfigDO = configRepository.save(config);
+    log.info(quartzConfigDO.toString());
     Assert.assertNotNull(config.getId());
   }
 
   @Test
   public void findOneTest() throws Exception {
-    ConfigDO configDO = configRepository.findOne(1l);
-    log.info(configDO.toString());
-    Assert.assertNotNull(configDO);
-    Assert.assertTrue(1l == configDO.getId());
+    QuartzConfigDO quartzConfigDO = configRepository.findOne(1l);
+    log.info(quartzConfigDO.toString());
+    Assert.assertNotNull(quartzConfigDO);
+    Assert.assertTrue(1l == quartzConfigDO.getId());
   }
 }

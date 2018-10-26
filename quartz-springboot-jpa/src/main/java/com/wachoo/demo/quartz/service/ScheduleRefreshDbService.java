@@ -1,6 +1,6 @@
 package com.wachoo.demo.quartz.service;
 
-import com.wachoo.demo.quartz.repository.ConfigRepository;
+import com.wachoo.demo.quartz.dao.repository.ConfigRepository;
 import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.CronScheduleBuilder;
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 public class ScheduleRefreshDbService {
 
   @Autowired
-  private ConfigRepository repository;
+  private IConfigService configService;
 
   @Resource(name = "jobDetail")
   private JobDetail jobDetail;
@@ -49,7 +49,7 @@ public class ScheduleRefreshDbService {
     // 当前Trigger使用的
     String currentCron = trigger.getCronExpression();
     // 从数据库查询出来的
-    String searchCron = repository.findOne(1L).getCron();
+    String searchCron = configService.selectConfig(1L).getCron();
     log.info("currentCron: {}", currentCron);
     log.info("futureCron: {}", searchCron);
     log.info("---------------------");

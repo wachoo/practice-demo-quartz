@@ -1,8 +1,8 @@
-package com.wachoo.demo.quartz;
+package com.wachoo.demo.quartz.controller;
 
-import com.wachoo.demo.quartz.entity.ConfigDO;
-import com.wachoo.demo.quartz.repository.ConfigRepository;
-import java.util.Map;
+import com.wachoo.demo.quartz.dao.repository.ConfigRepository;
+import com.wachoo.demo.quartz.entity.ao.QuartzConfigAO;
+import com.wachoo.demo.quartz.service.IConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,13 +22,14 @@ public class ConfigController {
 
   @Autowired
   ConfigRepository configRepository;
-
+  @Autowired
+  private IConfigService iConfigService;
 
   @ResponseBody
   @PostMapping("/v1/save")
-  public ConfigDO verify(@RequestBody ConfigDO body) {
-    ConfigDO save = configRepository.save(body);
-    return save;
+  public Boolean save(@RequestBody QuartzConfigAO body) {
+    Boolean aBoolean = iConfigService.insertConfig(body);
+    return aBoolean;
   }
 
 }

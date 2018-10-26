@@ -5,3 +5,11 @@ create table config(
 	creator varchar(40),
 	primary key(id)
 );
+
+/*
+CREATE TABLE `quartz`.`config`  (
+	`id` bigint(0) NOT NULL AUTO_INCREMENT,
+	`cron` varchar(255) NULL,
+	`creator` varchar(255) NULL,
+	PRIMARY KEY (`id`)
+);*/

@@ -1,6 +1,6 @@
-package com.wachoo.demo.quartz.repository;
+package com.wachoo.demo.quartz.dao.repository;
 
-import com.wachoo.demo.quartz.entity.ConfigDO;
+import com.wachoo.demo.quartz.entity.dbo.QuartzConfigDO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  * @date: 2018/10/25 15:08
  */
 @Repository
-public interface ConfigRepository extends JpaRepository<ConfigDO, Long> {
+public interface ConfigRepository extends JpaRepository<QuartzConfigDO, Long> {
 
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wachoo.demo.quartz.dao.mapper.quartz.IQuartzConfigMapper">
+  <resultMap id="BaseResultMap" type="com.wachoo.demo.quartz.entity.dbo.QuartzConfigDO">
+    <id column="id" property="id" jdbcType="BIGINT"/>
+    <result column="cron" property="cron" jdbcType="VARCHAR"/>
+    <result column="creator" property="creator" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, cron, creator
+  </sql>
+
+  <select id="selectConfig" resultMap="BaseResultMap"
+    parameterType="com.wachoo.demo.quartz.entity.dbo.QuartzConfigDO">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM config
+  </select>
+
+  <select id="select" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM config
+    WHERE id = #{id}
+  </select>
+
+  <insert id="insert" parameterType="com.wachoo.demo.quartz.entity.dbo.QuartzConfigDO">
+    INSERT INTO
+    config
+    (userName,passWord,user_sex)
+    VALUES
+    (#{userName}, #{passWord}, #{configex})
+  </insert>
+
+  <update id="update" parameterType="com.wachoo.demo.quartz.entity.dbo.QuartzConfigDO">
+    UPDATE
+    config
+    SET
+    <if test="userName != null">userName = #{userName},</if>
+    <if test="passWord != null">passWord = #{passWord},</if>
+    nick_name = #{nickName}
+    WHERE
+    id = #{id}
+  </update>
+
+  <delete id="delete" parameterType="java.lang.Long">
+    DELETE FROM
+    config
+    WHERE
+    id =#{id}
+  </delete>
+</mapper>
