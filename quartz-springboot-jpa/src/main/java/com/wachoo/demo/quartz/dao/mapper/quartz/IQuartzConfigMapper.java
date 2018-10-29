@@ -2,6 +2,7 @@ package com.wachoo.demo.quartz.dao.mapper.quartz;
 
 import com.wachoo.demo.quartz.entity.dbo.QuartzConfigDO;
 import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @desc:
@@ -9,6 +10,7 @@ import java.util.List;
  * @since: JDK1.8
  * @date: 2018/10/26 15:30
  */
+@Mapper
 public interface IQuartzConfigMapper {
 
   /**

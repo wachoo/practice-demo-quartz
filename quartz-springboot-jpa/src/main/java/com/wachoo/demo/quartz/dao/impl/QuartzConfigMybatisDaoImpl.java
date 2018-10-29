@@ -5,7 +5,7 @@ import static com.wachoo.demo.quartz.instants.DataSourceInsts.DATASOURCE_MARIADB
 import com.wachoo.demo.quartz.dao.IConfigDao;
 import com.wachoo.demo.quartz.dao.mapper.quartz.IQuartzConfigMapper;
 import com.wachoo.demo.quartz.entity.dbo.QuartzConfigDO;
-import com.wachoo.demo.quartz.instants.annotation.DS;
+import com.wachoo.demo.quartz.aspect.annotation.DataSources;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -41,7 +41,7 @@ public class QuartzConfigMybatisDaoImpl implements IConfigDao {
   }
 
   @Override
-  @DS(DATASOURCE_MARIADB_1)
+  @DataSources(DATASOURCE_MARIADB_1)
   public QuartzConfigDO select(Long id) {
     return configMapper.select(id);
   }

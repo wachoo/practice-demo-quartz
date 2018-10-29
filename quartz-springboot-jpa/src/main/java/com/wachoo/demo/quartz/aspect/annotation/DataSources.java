@@ -1,4 +1,4 @@
-package com.wachoo.demo.quartz.instants.annotation;
+package com.wachoo.demo.quartz.aspect.annotation;
 
 import static com.wachoo.demo.quartz.instants.DataSourceInsts.DATASOURCE_H2_1;
 
@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
 @Target({
     ElementType.METHOD
 })
-public @interface DS {
+public @interface DataSources {
 
   String value() default DATASOURCE_H2_1;
 }

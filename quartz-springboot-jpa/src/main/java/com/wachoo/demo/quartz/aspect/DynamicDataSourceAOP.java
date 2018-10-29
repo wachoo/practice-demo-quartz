@@ -1,6 +1,6 @@
-package com.wachoo.demo.quartz.aop;
+package com.wachoo.demo.quartz.aspect;
 
-import com.wachoo.demo.quartz.instants.annotation.DS;
+import com.wachoo.demo.quartz.aspect.annotation.DataSources;
 import com.wachoo.demo.quartz.manager.DataSourceContextHolder;
 import java.lang.reflect.Method;
 import org.aspectj.lang.JoinPoint;
@@ -19,9 +19,9 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
-public class DynamicDataSourceAspect {
+public class DynamicDataSourceAOP {
 
-  @Pointcut("@annotation(com.wachoo.demo.quartz.instants.annotation.DS)|| @target(com.wachoo.demo.quartz.instants.annotation.DS)")
+  @Pointcut("@annotation(com.wachoo.demo.quartz.aspect.annotation.DataSources)|| @target(com.wachoo.demo.quartz.aspect.annotation.DataSources)")
   public void annotationDS() {
   }
 
@@ -45,8 +45,8 @@ public class DynamicDataSourceAspect {
       Method method = className.getMethod(methodName, argClass);
 
       // 判断是否存在@DS注解
-      if (method.isAnnotationPresent(DS.class)) {
-        DS annotation = method.getAnnotation(DS.class);
+      if (method.isAnnotationPresent(DataSources.class)) {
+        DataSources annotation = method.getAnnotation(DataSources.class);
         // 取出注解中的数据源名
         dataSource = annotation.value();
       }

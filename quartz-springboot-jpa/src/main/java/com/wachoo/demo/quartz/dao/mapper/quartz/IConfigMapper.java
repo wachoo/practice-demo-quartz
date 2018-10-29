@@ -4,6 +4,7 @@ import com.wachoo.demo.quartz.entity.dbo.QuartzConfigDO;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -15,6 +16,7 @@ import org.apache.ibatis.annotations.Update;
  * @since: JDK1.8
  * @date: 2018/10/26 15:30
  */
+@Mapper
 public interface IConfigMapper {
 
   /**
